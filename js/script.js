@@ -1,6 +1,7 @@
 const scissors = document.getElementById ('scissors');
 const rock = document.getElementById ('rock');
 const paper = document.getElementById ('paper');
+const npc = document.getElementById ('npc');
 
 function rps (n) {
   let myGame = event.target.id;
@@ -18,6 +19,7 @@ function rps (n) {
         break;
       case 'rock':
         message = '음하하하핫! 내가 이겼다람쥐~';
+        npc.classList.add('npcmove');
         break;
       case 'paper':
         message = '으아앗! 다시 한판하자~';
@@ -33,12 +35,14 @@ function rps (n) {
         break;
       case 'paper':
         message = '음하하하핫! 내가 이겼다람쥐~';
+        npc.classList.add('npcmove');
         break;
     }
   } else if (myGame == 'paper') {
     switch (com) {
       case 'scissors':
         message = '음하하하핫! 내가 이겼다람쥐~';
+        npc.classList.add('npcmove');
         break;
       case 'rock':
         message = '으아앗! 다시 한판하자~';
@@ -54,6 +58,10 @@ function rps (n) {
   document.getElementById ('crps').innerHTML = trans (com);
   document.getElementById ('mimg').src = "images/" +myGame + ".png";
   document.getElementById ('cimg').src = "images/" +com + ".png";
+}
+npc.addEventListener('animationend', classrm, false);
+function classrm(){
+  npc.classList.remove('npcmove');
 }
 
 function trans (ts) {
